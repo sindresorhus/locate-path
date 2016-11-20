@@ -56,7 +56,14 @@ Minimum: `1`
 
 Number of concurrently pending promises.
 
-### locatePath.sync(input)
+##### cwd
+
+Type: `string`<br>
+Default: `process.cwd()`
+
+Current working directory.
+
+### locatePath.sync(input, [options])
 
 Returns the first path that exists or `undefined` if none exists.
 
@@ -65,6 +72,14 @@ Returns the first path that exists or `undefined` if none exists.
 Type: `Iterable<string>`
 
 Paths to check.
+
+#### options
+
+Type: `Object`
+
+##### cwd
+
+Same as above.
 
 
 ## Related
