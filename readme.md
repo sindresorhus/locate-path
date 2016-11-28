@@ -23,7 +23,7 @@ const files = [
 	'pony.png'
 ];
 
-locatePath(files, {concurrency: 1}).then(foundPath => {
+locatePath(files).then(foundPath => {
 	console.log(foundPath);
 	//=> 'rainbow'
 });
@@ -42,8 +42,6 @@ Type: `Iterable<string>`
 
 Paths to check.
 
-Set `{concurrency: 1}` to preserve the search order.
-
 #### options
 
 Type: `Object`
@@ -55,6 +53,15 @@ Default: `Infinity`<br>
 Minimum: `1`
 
 Number of concurrently pending promises.
+
+##### preserveOrder
+
+Type: `boolean`<br>
+Default: `true`
+
+Preserve `input` order when searching.
+
+Disable this to improve performance if you don't care about the order.
 
 ##### cwd
 

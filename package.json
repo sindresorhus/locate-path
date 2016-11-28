@@ -34,7 +34,7 @@
     "iterator"
   ],
   "dependencies": {
-    "p-locate": "^1.0.0",
+    "p-locate": "^2.0.0",
     "path-exists": "^3.0.0"
   },
   "devDependencies": {

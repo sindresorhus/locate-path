@@ -9,9 +9,9 @@ const input = [
 ];
 
 test('async', async t => {
-	t.is(await m(input, {concurrency: 1}), 'index.js');
-	t.is(await m(['nonexistant'], {concurrency: 1}), undefined);
-	t.is(await m(['noop', 'unicorn'], {concurrency: 1, cwd: 'fixture'}), 'unicorn');
+	t.is(await m(input), 'index.js');
+	t.is(await m(['nonexistant']), undefined);
+	t.is(await m(['noop', 'unicorn'], {cwd: 'fixture'}), 'unicorn');
 });
 
 test('sync', t => {
