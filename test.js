@@ -1,5 +1,5 @@
 import test from 'ava';
-import m from '.';
+import locatePath from '.';
 
 const input = [
 	'noop.foo',
@@ -9,13 +9,13 @@ const input = [
 ];
 
 test('async', async t => {
-	t.is(await m(input), 'index.js');
-	t.is(await m(['nonexistant']), undefined);
-	t.is(await m(['noop', 'unicorn'], {cwd: 'fixture'}), 'unicorn');
+	t.is(await locatePath(input), 'index.js');
+	t.is(await locatePath(['nonexistant']), undefined);
+	t.is(await locatePath(['noop', 'unicorn'], {cwd: 'fixture'}), 'unicorn');
 });
 
 test('sync', t => {
-	t.is(m.sync(input), 'index.js');
-	t.is(m.sync(['nonexistant']), undefined);
-	t.is(m.sync(['noop', 'unicorn'], {cwd: 'fixture'}), 'unicorn');
+	t.is(locatePath.sync(input), 'index.js');
+	t.is(locatePath.sync(['nonexistant']), undefined);
+	t.is(locatePath.sync(['noop', 'unicorn'], {cwd: 'fixture'}), 'unicorn');
 });
