@@ -3,22 +3,24 @@ const path = require('path');
 const pathExists = require('path-exists');
 const pLocate = require('p-locate');
 
-module.exports = (iterable, options) => {
-	options = Object.assign({
-		cwd: process.cwd()
-	}, options);
+module.exports = (paths, options) => {
+	options = {
+		cwd: process.cwd(),
+		...options
+	};
 
-	return pLocate(iterable, el => pathExists(path.resolve(options.cwd, el)), options);
+	return pLocate(paths, path_ => pathExists(path.resolve(options.cwd, path_)), options);
 };
 
-module.exports.sync = (iterable, options) => {
-	options = Object.assign({
-		cwd: process.cwd()
-	}, options);
+module.exports.sync = (paths, options) => {
+	options = {
+		cwd: process.cwd(),
+		...options
+	};
 
-	for (const el of iterable) {
-		if (pathExists.sync(path.resolve(options.cwd, el))) {
-			return el;
+	for (const path_ of paths) {
+		if (pathExists.sync(path.resolve(options.cwd, path_))) {
+			return path_;
 		}
 	}
 };

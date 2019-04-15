@@ -32,11 +32,11 @@ const files = [
 
 ## API
 
-### locatePath(input, [options])
+### locatePath(paths, [options])
 
-Returns a `Promise` for the first path that exists or `undefined` if none exists.
+Returns a `Promise<string>` for the first path that exists or `undefined` if none exists.
 
-#### input
+#### paths
 
 Type: `Iterable<string>`
 
@@ -59,7 +59,7 @@ Number of concurrently pending promises.
 Type: `boolean`<br>
 Default: `true`
 
-Preserve `input` order when searching.
+Preserve `paths` order when searching.
 
 Disable this to improve performance if you don't care about the order.
 
@@ -70,11 +70,11 @@ Default: `process.cwd()`
 
 Current working directory.
 
-### locatePath.sync(input, [options])
+### locatePath.sync(paths, [options])
 
 Returns the first path that exists or `undefined` if none exists.
 
-#### input
+#### paths
 
 Type: `Iterable<string>`
 

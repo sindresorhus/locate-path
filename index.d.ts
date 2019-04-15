@@ -17,7 +17,7 @@ declare namespace locatePath {
 		readonly concurrency?: number;
 
 		/**
-		Preserve `input` order when searching.
+		Preserve `paths` order when searching.
 
 		Disable this to improve performance if you don't care about the order.
 
@@ -31,7 +31,7 @@ declare const locatePath: {
 	/**
 	Get the first path that exists on disk of multiple paths.
 
-	@param input - Paths to check.
+	@param paths - Paths to check.
 	@returns The first path that exists or `undefined` if none exists.
 
 	@example
@@ -50,18 +50,18 @@ declare const locatePath: {
 	})();
 	```
 	*/
-	(input: Iterable<string>, options?: locatePath.AsyncOptions): Promise<
+	(paths: Iterable<string>, options?: locatePath.AsyncOptions): Promise<
 		string | undefined
 	>;
 
 	/**
 	Synchronously get the first path that exists on disk of multiple paths.
 
-	@param input - Paths to check.
+	@param paths - Paths to check.
 	@returns The first path that exists or `undefined` if none exists.
 	*/
 	sync(
-		input: Iterable<string>,
+		paths: Iterable<string>,
 		options?: locatePath.Options
 	): string | undefined;
 };
