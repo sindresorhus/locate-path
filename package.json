@@ -1,6 +1,6 @@
 {
 	"name": "locate-path",
-	"version": "3.0.0",
+	"version": "4.0.0",
 	"description": "Get the first path that exists on disk of multiple paths",
 	"license": "MIT",
 	"repository": "sindresorhus/locate-path",
