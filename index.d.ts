@@ -1,4 +1,8 @@
+import {LiteralUnion} from 'type-fest';
+
 declare namespace locatePath {
+	type OptionsType = LiteralUnion<'file' | 'directory', string>;
+
 	interface Options {
 		/**
 		Current working directory.
@@ -6,6 +10,20 @@ declare namespace locatePath {
 		@default process.cwd()
 		*/
 		readonly cwd?: string;
+
+		/**
+		Type of file to match.
+
+		@default undefined
+		*/
+		readonly type?: OptionsType;
+
+		/**
+		Follow symbolic links when checking `options.type`.
+
+		@default true
+		*/
+		readonly followSymlinks?: boolean;
 	}
 
 	interface AsyncOptions extends Options {

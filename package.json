@@ -35,7 +35,8 @@
 		"iterator"
 	],
 	"dependencies": {
-		"p-locate": "^4.1.0"
+		"p-locate": "^4.1.0",
+		"type-fest": "^0.4.1"
 	},
 	"devDependencies": {
 		"ava": "^1.4.1",
