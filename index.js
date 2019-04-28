@@ -17,12 +17,12 @@ function checkType({type}) {
 		return;
 	}
 
-	throw new TypeError(`Invalid type specified: ${type}`);
+	throw new Error(`Invalid type specified: ${type}`);
 }
 
 const matchType = (type, stat) => type === undefined || stat[typeMappings[type]]();
 
-module.exports = (paths, options) => {
+module.exports = async (paths, options) => {
 	options = {
 		cwd: process.cwd(),
 		followSymlinks: true,

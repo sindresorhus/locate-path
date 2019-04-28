@@ -16,6 +16,11 @@ test('async', async t => {
 	t.is(await locatePath(['fixture'], {type: 'file'}), undefined);
 	t.is(await locatePath(['fixture']), 'fixture');
 
+	await t.throwsAsync(locatePath(['fixture'], {type: 'rainbows'}), {
+		instanceOf: Error,
+		message: 'Invalid type specified: rainbows'
+	});
+
 	if (process.platform !== 'win32') {
 		t.is(await locatePath(['file-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'file-link');
 		t.is(await locatePath(['dir-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'unicorn');
@@ -33,6 +38,11 @@ test('sync', t => {
 	t.is(locatePath.sync(['index.js'], {type: 'directory'}), undefined);
 	t.is(locatePath.sync(['fixture'], {type: 'file'}), undefined);
 	t.is(locatePath.sync(['fixture']), 'fixture');
+
+	t.throws(() => locatePath.sync(['fixture'], {type: 'rainbows'}), {
+		instanceOf: Error,
+		message: 'Invalid type specified: rainbows'
+	});
 
 	if (process.platform !== 'win32') {
 		t.is(locatePath.sync(['file-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'file-link');
