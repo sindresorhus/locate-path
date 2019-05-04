@@ -70,6 +70,21 @@ Default: `process.cwd()`
 
 Current working directory.
 
+##### type
+
+Type: `string`<br>
+Default: `file`<br>
+Values: `file` `directory`
+
+The type of paths that can match.
+
+##### allowSymlinks
+
+Type: `boolean`<br>
+Default: `true`
+
+Allow symbolic links to match if they point to the chosen path type.
+
 ### locatePath.sync(paths, [options])
 
 Returns the first path that exists or `undefined` if none exists.
@@ -85,6 +100,14 @@ Paths to check.
 Type: `Object`
 
 ##### cwd
+
+Same as above.
+
+##### type
+
+Same as above.
+
+##### allowSymlinks
 
 Same as above.
 

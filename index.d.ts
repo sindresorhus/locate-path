@@ -6,6 +6,20 @@ declare namespace locatePath {
 		@default process.cwd()
 		*/
 		readonly cwd?: string;
+
+		/**
+		Type of path to match.
+
+		@default 'file'
+		*/
+		readonly type?: 'file' | 'directory';
+
+		/**
+		Allow symbolic links to match if they point to the requested path type.
+
+		@default true
+		*/
+		readonly allowSymlinks?: boolean;
 	}
 
 	interface AsyncOptions extends Options {
