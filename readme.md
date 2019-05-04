@@ -78,12 +78,12 @@ Allowed Values: `file` or `directory`
 
 Restricts the type of paths that can match.
 
-##### followSymlinks
+##### allowSymlinks
 
 Type: `boolean`<br>
 Default: `true`
 
-Follow symbolic links when checking `options.type`.
+Allow symbolic links to match if they point to the requested path type.
 
 ### locatePath.sync(paths, [options])
 
@@ -107,7 +107,7 @@ Same as above.
 
 Same as above.
 
-##### followSymlinks
+##### allowSymlinks
 
 Same as above.
 

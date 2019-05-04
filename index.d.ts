@@ -15,11 +15,11 @@ declare namespace locatePath {
 		readonly type?: 'file' | 'directory';
 
 		/**
-		Follow symbolic links when checking `options.type`.
+		Allow symbolic links to match if they point to the requested path type.
 
 		@default true
 		*/
-		readonly followSymlinks?: boolean;
+		readonly allowSymlinks?: boolean;
 	}
 
 	interface AsyncOptions extends Options {

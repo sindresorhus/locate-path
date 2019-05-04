@@ -32,8 +32,8 @@ test('async', async t => {
 		t.is(await locatePath(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'unicorn');
 		t.is(await locatePath(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'directory'}), 'directory-link');
 
-		t.is(await locatePath(['file-link', 'unicorn'], {cwd: 'fixture', followSymlinks: false, type: 'file'}), 'unicorn');
-		t.is(await locatePath(['directory-link', 'unicorn'], {cwd: 'fixture', followSymlinks: false, type: 'directory'}), undefined);
+		t.is(await locatePath(['file-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'file'}), 'unicorn');
+		t.is(await locatePath(['directory-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'directory'}), undefined);
 	}
 });
 
@@ -61,7 +61,7 @@ test('sync', t => {
 		t.is(locatePath.sync(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'unicorn');
 		t.is(locatePath.sync(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'directory'}), 'directory-link');
 
-		t.is(locatePath.sync(['file-link', 'unicorn'], {cwd: 'fixture', followSymlinks: false, type: 'file'}), 'unicorn');
-		t.is(locatePath.sync(['directory-link', 'unicorn'], {cwd: 'fixture', followSymlinks: false, type: 'directory'}), undefined);
+		t.is(locatePath.sync(['file-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'file'}), 'unicorn');
+		t.is(locatePath.sync(['directory-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'directory'}), undefined);
 	}
 });

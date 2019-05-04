@@ -26,11 +26,11 @@ module.exports = async (paths, options) => {
 	options = {
 		cwd: process.cwd(),
 		type: 'file',
-		followSymlinks: true,
+		allowSymlinks: true,
 		...options
 	};
 	checkType(options);
-	const statFn = options.followSymlinks ? fsStat : fsLStat;
+	const statFn = options.allowSymlinks ? fsStat : fsLStat;
 
 	return pLocate(paths, async path_ => {
 		try {
@@ -45,12 +45,12 @@ module.exports = async (paths, options) => {
 module.exports.sync = (paths, options) => {
 	options = {
 		cwd: process.cwd(),
-		followSymlinks: true,
+		allowSymlinks: true,
 		type: 'file',
 		...options
 	};
 	checkType(options);
-	const statFn = options.followSymlinks ? fs.statSync : fs.lstatSync;
+	const statFn = options.allowSymlinks ? fs.statSync : fs.lstatSync;
 
 	for (const path_ of paths) {
 		try {
