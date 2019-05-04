@@ -74,16 +74,16 @@ Current working directory.
 
 Type: `string`<br>
 Default: `file`<br>
-Allowed Values: `file` or `directory`
+Values: `file` `directory`
 
-Restricts the type of paths that can match.
+The type of paths that can match.
 
 ##### allowSymlinks
 
 Type: `boolean`<br>
 Default: `true`
 
-Allow symbolic links to match if they point to the requested path type.
+Allow symbolic links to match if they point to the chosen path type.
 
 ### locatePath.sync(paths, [options])
 
