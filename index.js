@@ -13,7 +13,7 @@ const typeMappings = {
 };
 
 function checkType({type}) {
-	if (type === undefined || type in typeMappings) {
+	if (type in typeMappings) {
 		return;
 	}
 
@@ -25,6 +25,7 @@ const matchType = (type, stat) => type === undefined || stat[typeMappings[type]]
 module.exports = async (paths, options) => {
 	options = {
 		cwd: process.cwd(),
+		type: 'file',
 		followSymlinks: true,
 		...options
 	};
@@ -35,7 +36,7 @@ module.exports = async (paths, options) => {
 		try {
 			const stat = await statFn(path.resolve(options.cwd, path_));
 			return matchType(options.type, stat);
-		} catch (error) {
+		} catch (_) {
 			return false;
 		}
 	}, options);
@@ -45,6 +46,7 @@ module.exports.sync = (paths, options) => {
 	options = {
 		cwd: process.cwd(),
 		followSymlinks: true,
+		type: 'file',
 		...options
 	};
 	checkType(options);
@@ -57,7 +59,7 @@ module.exports.sync = (paths, options) => {
 			if (matchType(options.type, stat)) {
 				return path_;
 			}
-		} catch (error) {
+		} catch (_) {
 		}
 	}
 };

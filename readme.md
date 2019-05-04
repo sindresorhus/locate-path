@@ -73,10 +73,10 @@ Current working directory.
 ##### type
 
 Type: `string`<br>
-Default: `undefined`<br>
+Default: `file`<br>
 Allowed Values: `file` or `directory`
 
-If defined this restricts the type of paths that can match.
+Restricts the type of paths that can match.
 
 ##### followSymlinks
 

@@ -1,8 +1,4 @@
-import {LiteralUnion} from 'type-fest';
-
 declare namespace locatePath {
-	type OptionsType = LiteralUnion<'file' | 'directory', string>;
-
 	interface Options {
 		/**
 		Current working directory.
@@ -12,11 +8,11 @@ declare namespace locatePath {
 		readonly cwd?: string;
 
 		/**
-		Type of file to match.
+		Type of path to match.
 
-		@default undefined
+		@default 'file'
 		*/
-		readonly type?: OptionsType;
+		readonly type?: 'file' | 'directory';
 
 		/**
 		Follow symbolic links when checking `options.type`.
