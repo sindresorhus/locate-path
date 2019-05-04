@@ -46,12 +46,16 @@ test('sync', t => {
 	t.is(locatePath.sync(['fixture']), undefined);
 	t.is(locatePath.sync(['fixture'], {type: 'directory'}), 'fixture');
 
-	t.throws(() => locatePath.sync(['fixture'], {type: 'rainbows'}), {
+	t.throws(() => {
+		locatePath.sync(['fixture'], {type: 'rainbows'});
+	}, {
 		instanceOf: Error,
 		message: 'Invalid type specified: rainbows'
 	});
 
-	t.throws(() => locatePath.sync(['fixture'], {type: undefined}), {
+	t.throws(() => {
+		locatePath.sync(['fixture'], {type: undefined});
+	}, {
 		instanceOf: Error,
 		message: 'Invalid type specified: undefined'
 	});
