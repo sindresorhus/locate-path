@@ -32,7 +32,7 @@ const files = [
 
 ## API
 
-### locatePath(paths, [options])
+### locatePath(paths, options?)
 
 Returns a `Promise<string>` for the first path that exists or `undefined` if none exists.
 
@@ -44,7 +44,7 @@ Paths to check.
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 ##### concurrency
 
@@ -73,8 +73,8 @@ Current working directory.
 ##### type
 
 Type: `string`<br>
-Default: `file`<br>
-Values: `file` `directory`
+Default: `'file'`<br>
+Values: `'file'` `'directory'`
 
 The type of paths that can match.
 
@@ -97,7 +97,7 @@ Paths to check.
 
 #### options
 
-Type: `Object`
+Type: `object`
 
 ##### cwd
 
@@ -117,6 +117,14 @@ Same as above.
 - [path-exists](https://github.com/sindresorhus/path-exists) - Check if a path exists
 
 
-## License
+---
 
-MIT © [Sindre Sorhus](https://sindresorhus.com)
+<div align="center">
+	<b>
+		<a href="https://tidelift.com/subscription/pkg/npm-locate-path?utm_source=npm-locate-path&utm_medium=referral&utm_campaign=readme">Get professional support for this package with a Tidelift subscription</a>
+	</b>
+	<br>
+	<sub>
+		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
+	</sub>
+</div>
