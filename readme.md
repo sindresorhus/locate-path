@@ -1,14 +1,12 @@
-# locate-path [![Build Status](https://travis-ci.org/sindresorhus/locate-path.svg?branch=master)](https://travis-ci.org/sindresorhus/locate-path)
+# locate-path [![Build Status](https://travis-ci.com/sindresorhus/locate-path.svg?branch=master)](https://travis-ci.com/github/sindresorhus/locate-path)
 
 > Get the first path that exists on disk of multiple paths
-
 
 ## Install
 
 ```
 $ npm install locate-path
 ```
-
 
 ## Usage
 
@@ -29,7 +27,6 @@ const files = [
 })();
 ```
 
-
 ## API
 
 ### locatePath(paths, options?)
@@ -48,15 +45,15 @@ Type: `object`
 
 ##### concurrency
 
-Type: `number`<br>
-Default: `Infinity`<br>
+Type: `number`\
+Default: `Infinity`\
 Minimum: `1`
 
 Number of concurrently pending promises.
 
 ##### preserveOrder
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `true`
 
 Preserve `paths` order when searching.
@@ -65,27 +62,27 @@ Disable this to improve performance if you don't care about the order.
 
 ##### cwd
 
-Type: `string`<br>
+Type: `string`\
 Default: `process.cwd()`
 
 Current working directory.
 
 ##### type
 
-Type: `string`<br>
-Default: `'file'`<br>
-Values: `'file'` `'directory'`
+Type: `string`\
+Default: `'file'`\
+Values: `'file' | 'directory'`
 
 The type of paths that can match.
 
 ##### allowSymlinks
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `true`
 
 Allow symbolic links to match if they point to the chosen path type.
 
-### locatePath.sync(paths, [options])
+### locatePath.sync(paths, options?)
 
 Returns the first path that exists or `undefined` if none exists.
 
@@ -111,11 +108,9 @@ Same as above.
 
 Same as above.
 
-
 ## Related
 
 - [path-exists](https://github.com/sindresorhus/path-exists) - Check if a path exists
-
 
 ---
 
