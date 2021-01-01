@@ -1,4 +1,4 @@
-# locate-path [![Build Status](https://travis-ci.com/sindresorhus/locate-path.svg?branch=master)](https://travis-ci.com/github/sindresorhus/locate-path)
+# locate-path
 
 > Get the first path that exists on disk of multiple paths
 
