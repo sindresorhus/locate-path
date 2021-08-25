@@ -80,7 +80,7 @@ Default: `true`
 
 Allow symbolic links to match if they point to the chosen path type.
 
-### locatePath.sync(paths, options?)
+### locatePathSync(paths, options?)
 
 Returns the first path that exists or `undefined` if none exists.
 
