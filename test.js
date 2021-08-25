@@ -1,11 +1,12 @@
+import process from 'node:process';
 import test from 'ava';
-import locatePath from '.';
+import {locatePath, locatePathSync} from './index.js';
 
 const paths = [
 	'noop.foo',
 	'unicorn.png',
 	'index.js',
-	'test.js'
+	'test.js',
 ];
 
 test('async', async t => {
@@ -19,12 +20,12 @@ test('async', async t => {
 
 	await t.throwsAsync(locatePath(['fixture'], {type: 'rainbows'}), {
 		instanceOf: Error,
-		message: 'Invalid type specified: rainbows'
+		message: 'Invalid type specified: rainbows',
 	});
 
-	await t.throwsAsync(locatePath(['fixture'], {type: undefined}), {
+	await t.throwsAsync(locatePath(['fixture'], {type: 1}), {
 		instanceOf: Error,
-		message: 'Invalid type specified: undefined'
+		message: 'Invalid type specified: 1',
 	});
 
 	if (process.platform !== 'win32') {
@@ -38,34 +39,34 @@ test('async', async t => {
 });
 
 test('sync', t => {
-	t.is(locatePath.sync(paths), 'index.js');
-	t.is(locatePath.sync(['nonexistant']), undefined);
-	t.is(locatePath.sync(['noop', 'unicorn'], {cwd: 'fixture'}), 'unicorn');
-	t.is(locatePath.sync(['index.js'], {type: 'directory'}), undefined);
-	t.is(locatePath.sync(['fixture'], {type: 'file'}), undefined);
-	t.is(locatePath.sync(['fixture']), undefined);
-	t.is(locatePath.sync(['fixture'], {type: 'directory'}), 'fixture');
+	t.is(locatePathSync(paths), 'index.js');
+	t.is(locatePathSync(['nonexistant']), undefined);
+	t.is(locatePathSync(['noop', 'unicorn'], {cwd: 'fixture'}), 'unicorn');
+	t.is(locatePathSync(['index.js'], {type: 'directory'}), undefined);
+	t.is(locatePathSync(['fixture'], {type: 'file'}), undefined);
+	t.is(locatePathSync(['fixture']), undefined);
+	t.is(locatePathSync(['fixture'], {type: 'directory'}), 'fixture');
 
 	t.throws(() => {
-		locatePath.sync(['fixture'], {type: 'rainbows'});
+		locatePathSync(['fixture'], {type: 'rainbows'});
 	}, {
 		instanceOf: Error,
-		message: 'Invalid type specified: rainbows'
+		message: 'Invalid type specified: rainbows',
 	});
 
 	t.throws(() => {
-		locatePath.sync(['fixture'], {type: undefined});
+		locatePathSync(['fixture'], {type: 1});
 	}, {
 		instanceOf: Error,
-		message: 'Invalid type specified: undefined'
+		message: 'Invalid type specified: 1',
 	});
 
 	if (process.platform !== 'win32') {
-		t.is(locatePath.sync(['file-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'file-link');
-		t.is(locatePath.sync(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'unicorn');
-		t.is(locatePath.sync(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'directory'}), 'directory-link');
+		t.is(locatePathSync(['file-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'file-link');
+		t.is(locatePathSync(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'unicorn');
+		t.is(locatePathSync(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'directory'}), 'directory-link');
 
-		t.is(locatePath.sync(['file-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'file'}), 'unicorn');
-		t.is(locatePath.sync(['directory-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'directory'}), undefined);
+		t.is(locatePathSync(['file-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'file'}), 'unicorn');
+		t.is(locatePathSync(['directory-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'directory'}), undefined);
 	}
 });

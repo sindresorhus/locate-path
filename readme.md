@@ -13,7 +13,7 @@ $ npm install locate-path
 Here we find the first file that exists on disk, in array order.
 
 ```js
-const locatePath = require('locate-path');
+import {locatePath} from 'locate-path';
 
 const files = [
 	'unicorn.png',
@@ -21,10 +21,8 @@ const files = [
 	'pony.png'
 ];
 
-(async () => {
-	console(await locatePath(files));
-	//=> 'rainbow'
-})();
+console(await locatePath(files));
+//=> 'rainbow'
 ```
 
 ## API
@@ -37,7 +35,7 @@ Returns a `Promise<string>` for the first path that exists or `undefined` if non
 
 Type: `Iterable<string>`
 
-Paths to check.
+The paths to check.
 
 #### options
 
@@ -49,7 +47,7 @@ Type: `number`\
 Default: `Infinity`\
 Minimum: `1`
 
-Number of concurrently pending promises.
+The number of concurrently pending promises.
 
 ##### preserveOrder
 
@@ -65,7 +63,7 @@ Disable this to improve performance if you don't care about the order.
 Type: `string`\
 Default: `process.cwd()`
 
-Current working directory.
+The current working directory.
 
 ##### type
 
@@ -90,7 +88,7 @@ Returns the first path that exists or `undefined` if none exists.
 
 Type: `Iterable<string>`
 
-Paths to check.
+The paths to check.
 
 #### options
 

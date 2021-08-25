@@ -1,10 +1,10 @@
 import {expectType} from 'tsd';
-import locatePath = require('.');
+import {locatePath, locatePathSync} from './index.js';
 
 const files = [
 	'unicorn.png',
 	'rainbow.png',
-	'pony.png'
+	'pony.png',
 ];
 
 expectType<Promise<string | undefined>>(locatePath(files));
@@ -16,9 +16,9 @@ expectType<Promise<string | undefined>>(locatePath(files, {type: 'directory'}));
 expectType<Promise<string | undefined>>(locatePath(files, {allowSymlinks: true}));
 expectType<Promise<string | undefined>>(locatePath(files, {allowSymlinks: false}));
 
-expectType<string | undefined>(locatePath.sync(files));
-expectType<string | undefined>(locatePath.sync(files, {cwd: '.'}));
-expectType<string | undefined>(locatePath.sync(files, {type: 'file'}));
-expectType<string | undefined>(locatePath.sync(files, {type: 'directory'}));
-expectType<string | undefined>(locatePath.sync(files, {allowSymlinks: true}));
-expectType<string | undefined>(locatePath.sync(files, {allowSymlinks: false}));
+expectType<string | undefined>(locatePathSync(files));
+expectType<string | undefined>(locatePathSync(files, {cwd: '.'}));
+expectType<string | undefined>(locatePathSync(files, {type: 'file'}));
+expectType<string | undefined>(locatePathSync(files, {type: 'directory'}));
+expectType<string | undefined>(locatePathSync(files, {allowSymlinks: true}));
+expectType<string | undefined>(locatePathSync(files, {allowSymlinks: false}));
