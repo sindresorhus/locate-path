@@ -1,6 +1,7 @@
 import process from 'node:process';
 import path from 'node:path';
 import fs, {promises as fsPromises} from 'node:fs';
+import {fileURLToPath} from 'node:url';
 import pLocate from 'p-locate';
 
 const typeMappings = {
@@ -18,6 +19,8 @@ function checkType(type) {
 
 const matchType = (type, stat) => type === undefined || stat[typeMappings[type]]();
 
+const toPath = urlOrPath => urlOrPath instanceof URL ? fileURLToPath(urlOrPath) : urlOrPath;
+
 export async function locatePath(
 	paths,
 	{
@@ -29,6 +32,7 @@ export async function locatePath(
 	} = {},
 ) {
 	checkType(type);
+	cwd = toPath(cwd);
 
 	const statFunction = allowSymlinks ? fsPromises.stat : fsPromises.lstat;
 
@@ -51,6 +55,7 @@ export function locatePathSync(
 	} = {},
 ) {
 	checkType(type);
+	cwd = toPath(cwd);
 
 	const statFunction = allowSymlinks ? fs.statSync : fs.lstatSync;
 

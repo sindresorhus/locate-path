@@ -13,6 +13,7 @@ test('async', async t => {
 	t.is(await locatePath(paths), 'index.js');
 	t.is(await locatePath(['nonexistant']), undefined);
 	t.is(await locatePath(['noop', 'unicorn'], {cwd: 'fixture'}), 'unicorn');
+	t.is(await locatePath(['noop', 'unicorn'], {cwd: new URL('fixture', import.meta.url)}), 'unicorn');
 	t.is(await locatePath(['index.js'], {type: 'directory'}), undefined);
 	t.is(await locatePath(['fixture'], {type: 'file'}), undefined);
 	t.is(await locatePath(['fixture']), undefined);
@@ -42,6 +43,7 @@ test('sync', t => {
 	t.is(locatePathSync(paths), 'index.js');
 	t.is(locatePathSync(['nonexistant']), undefined);
 	t.is(locatePathSync(['noop', 'unicorn'], {cwd: 'fixture'}), 'unicorn');
+	t.is(locatePathSync(['noop', 'unicorn'], {cwd: new URL('fixture', import.meta.url)}), 'unicorn');
 	t.is(locatePathSync(['index.js'], {type: 'directory'}), undefined);
 	t.is(locatePathSync(['fixture'], {type: 'file'}), undefined);
 	t.is(locatePathSync(['fixture']), undefined);

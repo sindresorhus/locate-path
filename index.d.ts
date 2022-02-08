@@ -4,7 +4,7 @@ export interface Options {
 
 	@default process.cwd()
 	*/
-	readonly cwd?: string;
+	readonly cwd?: URL | string;
 
 	/**
 	The type of path to match.
