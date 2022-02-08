@@ -60,7 +60,7 @@ Disable this to improve performance if you don't care about the order.
 
 ##### cwd
 
-Type: `string`\
+Type: `URL | string`\
 Default: `process.cwd()`
 
 The current working directory.
