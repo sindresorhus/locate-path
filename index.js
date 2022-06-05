@@ -17,7 +17,7 @@ function checkType(type) {
 	throw new Error(`Invalid type specified: ${type}`);
 }
 
-const matchType = (type, stat) => type === undefined || stat[typeMappings[type]]();
+const matchType = (type, stat) => stat[typeMappings[type]]();
 
 const toPath = urlOrPath => urlOrPath instanceof URL ? fileURLToPath(urlOrPath) : urlOrPath;
 
