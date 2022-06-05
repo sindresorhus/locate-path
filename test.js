@@ -24,6 +24,11 @@ test('async', async t => {
 		message: 'Invalid type specified: rainbows',
 	});
 
+	await t.throwsAsync(locatePath(['fixture'], {type: 'toString'}), {
+		instanceOf: Error,
+		message: 'Invalid type specified: toString',
+	});
+
 	await t.throwsAsync(locatePath(['fixture'], {type: 1}), {
 		instanceOf: Error,
 		message: 'Invalid type specified: 1',
@@ -54,6 +59,13 @@ test('sync', t => {
 	}, {
 		instanceOf: Error,
 		message: 'Invalid type specified: rainbows',
+	});
+
+	t.throws(() => {
+		locatePathSync(['fixture'], {type: 'toString'});
+	}, {
+		instanceOf: Error,
+		message: 'Invalid type specified: toString',
 	});
 
 	t.throws(() => {
