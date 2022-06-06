@@ -10,14 +10,14 @@ const typeMappings = {
 };
 
 function checkType(type) {
-	if (type in typeMappings) {
+	if (Object.hasOwnProperty.call(typeMappings, type)) {
 		return;
 	}
 
 	throw new Error(`Invalid type specified: ${type}`);
 }
 
-const matchType = (type, stat) => type === undefined || stat[typeMappings[type]]();
+const matchType = (type, stat) => stat[typeMappings[type]]();
 
 const toPath = urlOrPath => urlOrPath instanceof URL ? fileURLToPath(urlOrPath) : urlOrPath;
 
