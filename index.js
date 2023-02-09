@@ -62,7 +62,7 @@ export function locatePathSync(
 	for (const path_ of paths) {
 		try {
 			const stat = statFunction(path.resolve(cwd, path_), {
-				throwIfNoEntry: false
+				throwIfNoEntry: false,
 			});
 
 			if (!stat) {
