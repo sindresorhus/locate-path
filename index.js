@@ -10,7 +10,7 @@ const typeMappings = {
 };
 
 function checkType(type) {
-	if (Object.hasOwnProperty.call(typeMappings, type)) {
+	if (Object.hasOwn(typeMappings, type)) {
 		return;
 	}
 

@@ -1,4 +1,4 @@
-export interface Options {
+export type Options = {
 	/**
 	The current working directory.
 
@@ -19,9 +19,9 @@ export interface Options {
 	@default true
 	*/
 	readonly allowSymlinks?: boolean;
-}
+};
 
-export interface AsyncOptions extends Options {
+export type AsyncOptions = {
 	/**
 	The number of concurrently pending promises.
 
@@ -39,7 +39,7 @@ export interface AsyncOptions extends Options {
 	@default true
 	*/
 	readonly preserveOrder?: boolean;
-}
+} & Options;
 
 /**
 Get the first path that exists on disk of multiple paths.

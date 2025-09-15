@@ -11,7 +11,7 @@ const paths = [
 
 test('async', async t => {
 	t.is(await locatePath(paths), 'index.js');
-	t.is(await locatePath(['nonexistant']), undefined);
+	t.is(await locatePath(['nonexistent']), undefined);
 	t.is(await locatePath(['noop', 'unicorn'], {cwd: 'fixture'}), 'unicorn');
 	t.is(await locatePath(['noop', 'unicorn'], {cwd: new URL('fixture', import.meta.url)}), 'unicorn');
 	t.is(await locatePath(['index.js'], {type: 'directory'}), undefined);
@@ -46,7 +46,7 @@ test('async', async t => {
 
 test('sync', t => {
 	t.is(locatePathSync(paths), 'index.js');
-	t.is(locatePathSync(['nonexistant']), undefined);
+	t.is(locatePathSync(['nonexistent']), undefined);
 	t.is(locatePathSync(['noop', 'unicorn'], {cwd: 'fixture'}), 'unicorn');
 	t.is(locatePathSync(['noop', 'unicorn'], {cwd: new URL('fixture', import.meta.url)}), 'unicorn');
 	t.is(locatePathSync(['index.js'], {type: 'directory'}), undefined);
