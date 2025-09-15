@@ -21,8 +21,8 @@ const files = [
 	'pony.png'
 ];
 
-console(await locatePath(files));
-//=> 'rainbow'
+console.log(await locatePath(files));
+//=> 'rainbow.png'
 ```
 
 ## API
@@ -69,9 +69,13 @@ The current working directory.
 
 Type: `string`\
 Default: `'file'`\
-Values: `'file' | 'directory'`
+Values: `'file' | 'directory' | 'both'`
 
-The type of paths that can match.
+The type of path to match.
+
+- `'file'` - Only match files
+- `'directory'` - Only match directories
+- `'both'` - Match both files and directories
 
 ##### allowSymlinks
 

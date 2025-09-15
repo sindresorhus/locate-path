@@ -19,6 +19,12 @@ test('async', async t => {
 	t.is(await locatePath(['fixture']), undefined);
 	t.is(await locatePath(['fixture'], {type: 'directory'}), 'fixture');
 
+	// Test 'both' option
+	t.is(await locatePath(['index.js'], {type: 'both'}), 'index.js');
+	t.is(await locatePath(['fixture'], {type: 'both'}), 'fixture');
+	t.is(await locatePath(['fixture', 'index.js'], {type: 'both'}), 'fixture');
+	t.is(await locatePath(['index.js', 'fixture'], {type: 'both'}), 'index.js');
+
 	await t.throwsAsync(locatePath(['fixture'], {type: 'rainbows'}), {
 		instanceOf: Error,
 		message: 'Invalid type specified: rainbows',
@@ -39,6 +45,10 @@ test('async', async t => {
 		t.is(await locatePath(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'unicorn');
 		t.is(await locatePath(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'directory'}), 'directory-link');
 
+		// Test 'both' with symlinks
+		t.is(await locatePath(['file-link', 'directory-link'], {cwd: 'fixture', type: 'both'}), 'file-link');
+		t.is(await locatePath(['directory-link', 'file-link'], {cwd: 'fixture', type: 'both'}), 'directory-link');
+
 		t.is(await locatePath(['file-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'file'}), 'unicorn');
 		t.is(await locatePath(['directory-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'directory'}), undefined);
 	}
@@ -53,6 +63,12 @@ test('sync', t => {
 	t.is(locatePathSync(['fixture'], {type: 'file'}), undefined);
 	t.is(locatePathSync(['fixture']), undefined);
 	t.is(locatePathSync(['fixture'], {type: 'directory'}), 'fixture');
+
+	// Test 'both' option
+	t.is(locatePathSync(['index.js'], {type: 'both'}), 'index.js');
+	t.is(locatePathSync(['fixture'], {type: 'both'}), 'fixture');
+	t.is(locatePathSync(['fixture', 'index.js'], {type: 'both'}), 'fixture');
+	t.is(locatePathSync(['index.js', 'fixture'], {type: 'both'}), 'index.js');
 
 	t.throws(() => {
 		locatePathSync(['fixture'], {type: 'rainbows'});
@@ -79,6 +95,10 @@ test('sync', t => {
 		t.is(locatePathSync(['file-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'file-link');
 		t.is(locatePathSync(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'file'}), 'unicorn');
 		t.is(locatePathSync(['directory-link', 'unicorn'], {cwd: 'fixture', type: 'directory'}), 'directory-link');
+
+		// Test 'both' with symlinks
+		t.is(locatePathSync(['file-link', 'directory-link'], {cwd: 'fixture', type: 'both'}), 'file-link');
+		t.is(locatePathSync(['directory-link', 'file-link'], {cwd: 'fixture', type: 'both'}), 'directory-link');
 
 		t.is(locatePathSync(['file-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'file'}), 'unicorn');
 		t.is(locatePathSync(['directory-link', 'unicorn'], {cwd: 'fixture', allowSymlinks: false, type: 'directory'}), undefined);

@@ -9,9 +9,13 @@ export type Options = {
 	/**
 	The type of path to match.
 
+	- `'file'` - Only match files
+	- `'directory'` - Only match directories
+	- `'both'` - Match both files and directories
+
 	@default 'file'
 	*/
-	readonly type?: 'file' | 'directory';
+	readonly type?: 'file' | 'directory' | 'both';
 
 	/**
 	Allow symbolic links to match if they point to the requested path type.
@@ -57,8 +61,8 @@ const files = [
 	'pony.png'
 ];
 
-console(await locatePath(files));
-//=> 'rainbow'
+console.log(await locatePath(files));
+//=> 'rainbow.png'
 ```
 */
 export function locatePath(
@@ -82,8 +86,8 @@ const files = [
 	'pony.png'
 ];
 
-console(locatePathSync(files));
-//=> 'rainbow'
+console.log(locatePathSync(files));
+//=> 'rainbow.png'
 ```
 */
 export function locatePathSync(

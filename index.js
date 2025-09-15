@@ -10,14 +10,14 @@ const typeMappings = {
 };
 
 function checkType(type) {
-	if (Object.hasOwn(typeMappings, type)) {
+	if (type === 'both' || Object.hasOwn(typeMappings, type)) {
 		return;
 	}
 
 	throw new Error(`Invalid type specified: ${type}`);
 }
 
-const matchType = (type, stat) => stat[typeMappings[type]]();
+const matchType = (type, stat) => type === 'both' ? (stat.isFile() || stat.isDirectory()) : stat[typeMappings[type]]();
 
 const toPath = urlOrPath => urlOrPath instanceof URL ? fileURLToPath(urlOrPath) : urlOrPath;
 
